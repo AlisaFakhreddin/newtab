@@ -159,9 +159,9 @@ function doSearch(){
   const q = searchInput.value.trim();
   if(!q) return;
   if(/^https?:\/\//i.test(q) || q.includes('.') && !q.includes(' ')){
-    window.open(q.startsWith('http')? q : 'https://'+q,'_blank');
+    window.open(q.startsWith('http')? q : 'https://'+q,' ');
   } else {
-    window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');
+    window.open('https://www.google.com/search?q='+encodeURIComponent(q),' ');
   }
 }
 
@@ -180,14 +180,14 @@ function renderShortcuts(){
     const d = document.createElement('div'); 
     d.className='shortcut';
     d.innerHTML = `<strong>${s.title}</strong><small>${(new URL(s.url)).hostname.replace('www.','')}</small>`;
-    d.onclick = ()=> window.open(s.url,'_blank');
+    d.onclick = ()=> window.open(s.url,' ');
     el.appendChild(d);
   });
 }
 renderShortcuts();
 
 /* --- Dock links --- */
-qs('.dock .item').forEach(it=>it.addEventListener('click', ()=>{ window.open(it.dataset.url,'_blank'); }));
+qs('.dock .item').forEach(it=>it.addEventListener('click', ()=>{ window.open(it.dataset.url,''); }));
 
 /* --- Particles --- */
 const canvas = document.getElementById('particle-canvas');
@@ -227,3 +227,4 @@ loop();
 </script>
 </body>
 </html>
+
